@@ -202,13 +202,13 @@ jobs:
           root     = pathlib.Path(".gh-pages")
           pl_path  = root / "package-list.json"
           version  = os.environ["RELEASE_VERSION"]
-          canonical = "https://up-manila-silab.github.io/ph-core"
+          canonical = "https://jgsuess.github.io/ph-core"
 
           if pl_path.exists():
               pl = json.loads(pl_path.read_text(encoding="utf-8"))
           else:
               pl = {
-                  "package-id": "ph.core.fhir",
+                  "package-id": "fhir.ph.core",
                   "title": "PH Core FHIR Implementation Guide",
                   "canonical": canonical,
                   "introduction": "Philippine Core FHIR Implementation Guide",
@@ -317,7 +317,7 @@ jobs:
 
           <p>
             <strong>Source repository:</strong>
-            <a href="https://github.com/UP-Manila-SILab/ph-core">github.com/UP-Manila-SILab/ph-core</a>
+            <a href="https://github.com/jgsuess/ph-core">github.com/jgsuess/ph-core</a>
           </p>
 
           <h2>Published Versions</h2>

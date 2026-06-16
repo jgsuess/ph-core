@@ -1,0 +1,189 @@
+name: IG CI (dev)
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ig-dev
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node (for SUSHI)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install SUSHI
+        run: npm install -g fsh-sushi
+
+      - name: Install Java (for IG Publisher)
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Download IG Publisher
+        run: |
+          mkdir -p input-cache
+          curl -L -o input-cache/publisher.jar \
+            https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
+
+      - name: Install Ruby and Jekyll (required by IG Publisher)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+      - name: Install Jekyll
+        run: gem install jekyll
+
+      - name: Install Graphviz (for PlantUML dot renderer)
+        run: sudo apt-get install -y graphviz
+
+      - name: Run IG Publisher (includes SUSHI)
+        run: java -jar input-cache/publisher.jar ig.ini
+
+      - name: Prepare publish directory (dev)
+        run: |
+          rm -rf .publish
+          mkdir -p .publish/dev
+          rsync -a output/ .publish/dev/
+
+      - name: Regenerate root index.html
+        run: |
+          # Fetch current package-list.json from gh-pages (if it exists)
+          rm -rf .gh-pages-meta
+          git clone --depth 1 --branch gh-pages \
+            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            .gh-pages-meta 2>/dev/null || mkdir -p .gh-pages-meta
+
+          python3 - <<'PY'
+          import json, pathlib, textwrap
+
+          meta = pathlib.Path(".gh-pages-meta")
+
+          # --- Discover releases from package-list.json ---
+          pl_path = meta / "package-list.json"
+          releases = []
+          if pl_path.exists():
+              pl = json.loads(pl_path.read_text(encoding="utf-8"))
+              for entry in pl.get("list", []):
+                  v = entry["version"]
+                  date = entry.get("date", "")
+                  is_current = entry.get("current", False)
+                  releases.append((v, date, is_current))
+
+          # --- Build HTML ---
+          rows = []
+
+          rows.append(
+              '<tr>'
+              '<td><a href="./dev/">dev</a></td>'
+              '<td><span class="badge badge-dev">CI Build</span></td>'
+              '<td>Latest continuous-integration build from the <code>main</code> branch.</td>'
+              '</tr>'
+          )
+
+          for v, date, is_current in releases:
+              current_badge = ' <span class="badge badge-current">current</span>' if is_current else ""
+              date_str = f" &mdash; published {date}" if date else ""
+              rows.append(
+                  f'<tr>'
+                  f'<td><a href="./{v}/">{v}</a></td>'
+                  f'<td><span class="badge badge-release">Release</span>{current_badge}</td>'
+                  f'<td>Draft release{date_str}.</td>'
+                  f'</tr>'
+              )
+
+          html = f"""\
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>PH Core FHIR Implementation Guide</title>
+          <style>
+            body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                   max-width: 800px; margin: 2em auto; padding: 0 1em; color: #24292f; line-height: 1.6; }}
+            h1   {{ border-bottom: 1px solid #d1d9e0; padding-bottom: .3em; }}
+            h2   {{ margin-top: 1.5em; }}
+            a    {{ color: #0969da; text-decoration: none; }}
+            a:hover {{ text-decoration: underline; }}
+            table {{ border-collapse: collapse; width: 100%; margin: 1em 0; }}
+            th, td {{ text-align: left; padding: .5em .75em; border: 1px solid #d1d9e0; }}
+            th   {{ background: #f6f8fa; }}
+            .badge {{ display: inline-block; padding: .15em .5em; border-radius: 3px;
+                     font-size: .85em; font-weight: 600; }}
+            .badge-dev     {{ background: #ddf4ff; color: #0969da; }}
+            .badge-release {{ background: #dafbe1; color: #1a7f37; }}
+            .badge-current {{ background: #fff8c5; color: #9a6700; }}
+            footer {{ margin-top: 3em; padding-top: 1em; border-top: 1px solid #d1d9e0;
+                     font-size: .85em; color: #656d76; }}
+          </style>
+          </head>
+          <body>
+
+          <h1>PH Core FHIR Implementation Guide</h1>
+
+          <p>
+            This is the publication landing page for the <strong>Philippine Core
+            FHIR Implementation Guide</strong>&nbsp;&mdash; a fork that tracks the
+            upstream <a href="https://github.com/UP-Manila-SILab/ph-core">UP-Manila-SILab/ph-core</a>
+            work with automated CI/CD publication.
+          </p>
+
+          <p>
+            <strong>Source repository:</strong>
+            <a href="https://github.com/jgsuess/ph-core">github.com/jgsuess/ph-core</a>
+          </p>
+
+          <h2>Published Versions</h2>
+
+          <table>
+            <thead>
+              <tr><th>Version</th><th>Status</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              {"".join(rows)}
+            </tbody>
+          </table>
+
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="./current/">Latest release</a> (redirects to newest tagged version)</li>
+            <li><a href="./history.html">Full publication history</a></li>
+            <li><a href="./package-list.json">package-list.json</a> (FHIR package feed)</li>
+          </ul>
+
+          <footer>
+            This page is regenerated automatically by the CI and release workflows.
+          </footer>
+
+          </body>
+          </html>
+          """
+
+          out = pathlib.Path(".publish") / "index.html"
+          out.write_text(textwrap.dedent(html), encoding="utf-8")
+          print(f"Wrote .publish/index.html with {len(releases)} release(s)")
+          PY
+
+      - name: Publish to gh-pages:/dev/
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .publish
+          keep_files: true
+          commit_message: "ci(dev): publish dev build from ${{ github.sha }}"
