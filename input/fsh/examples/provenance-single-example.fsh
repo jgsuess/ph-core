@@ -17,6 +17,6 @@ Description: "Provenance record documenting that Dr. Maria Clara Santos created 
 * signature[0].type = urn:iso-astm:E1762-95:2013#1.2.840.10065.1.12.1.1 "Author's Signature"
 * signature[=].when = "2012-09-17T08:30:15+08:00"
 * signature[=].who = Reference(Practitioner/practitioner-single-example)
-* signature[=].targetFormat = #xml
-* signature[=].sigFormat = #xml
+* signature[=].targetFormat = #application/xml
+* signature[=].sigFormat = #application/xml
 * signature[=].data = "dGhpcyBibG9iIGlzIHNuZWFrZWQ="
