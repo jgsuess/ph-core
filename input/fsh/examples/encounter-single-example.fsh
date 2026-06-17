@@ -10,7 +10,7 @@ Description: "An ambulatory visit for Juan Dela Cruz that has been completed."
 * identifier.value = "ENC-12345"
 * period.start = "2023-01-01T10:00:00Z"
 * period.end = "2023-01-01T11:00:00Z"
-* type = http://terminology.hl7.org/CodeSystem/v3-ActCode#AMB "ambulatory"
+* type = $sct#11429006 "Consultation"
 * participant.individual = Reference(Practitioner/practitioner-single-example)
 * participant.type = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND "attender"
 * diagnosis.condition = Reference(Condition/condition-single-example)
