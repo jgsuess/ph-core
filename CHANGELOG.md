@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/jgsuess/ph-core/compare/v0.1.1...v0.1.2) (2026-06-17)
+
+
+### Bug Fixes
+
+* **ci:** pull --rebase before gh-pages push to avoid race with ig-ci-dev ([bf1f46a](https://github.com/jgsuess/ph-core/commit/bf1f46a65e23dec39c46d01852b9e8841d476404))
+* **examples:** use application/xml MIME type in Provenance signature ([921120b](https://github.com/jgsuess/ph-core/commit/921120b4ac8640b11ee21b2b1cb7a5813df1d48a))
+
 ## [0.1.1](https://github.com/jgsuess/ph-core/compare/v0.1.0...v0.1.1) (2026-06-17)
 
 
