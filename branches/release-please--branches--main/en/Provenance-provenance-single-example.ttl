@@ -71,8 +71,8 @@
        fhir:link <https://fhir.doh.gov.ph/phcore/Practitioner/practitioner-single-example> ;
        fhir:reference [ fhir:v "Practitioner/practitioner-single-example" ]
      ] ;
-     fhir:targetFormat [ fhir:v "xml" ] ;
-     fhir:sigFormat [ fhir:v "xml" ] ;
+     fhir:targetFormat [ fhir:v "application/xml" ] ;
+     fhir:sigFormat [ fhir:v "application/xml" ] ;
      fhir:data [ fhir:v "dGhpcyBibG9iIGlzIHNuZWFrZWQ="^^xsd:base64Binary ]
   ] ) . # 
 

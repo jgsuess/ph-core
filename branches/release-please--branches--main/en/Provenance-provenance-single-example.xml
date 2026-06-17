@@ -53,8 +53,8 @@
     <who>
       <reference value="Practitioner/practitioner-single-example"/>
     </who>
-    <targetFormat value="xml"/>
-    <sigFormat value="xml"/>
+    <targetFormat value="application/xml"/>
+    <sigFormat value="application/xml"/>
     <data value="dGhpcyBibG9iIGlzIHNuZWFrZWQ="/>
   </signature>
 </Provenance>

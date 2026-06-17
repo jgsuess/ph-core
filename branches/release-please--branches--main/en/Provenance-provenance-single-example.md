@@ -75,8 +75,8 @@ Summary
     "who" : {
       "reference" : "Practitioner/practitioner-single-example"
     },
-    "targetFormat" : "xml",
-    "sigFormat" : "xml",
+    "targetFormat" : "application/xml",
+    "sigFormat" : "application/xml",
     "data" : "dGhpcyBibG9iIGlzIHNuZWFrZWQ="
   }]
 }

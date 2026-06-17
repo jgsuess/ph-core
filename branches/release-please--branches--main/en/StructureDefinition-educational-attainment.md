@@ -37,7 +37,7 @@ Other representations of profile: [CSV](../StructureDefinition-educational-attai
   "title" : "Educational Attainment",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-06-17T07:47:01+00:00",
+  "date" : "2026-06-17T13:40:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
