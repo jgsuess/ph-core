@@ -47,9 +47,6 @@ Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus.
   "subject" : {
     "reference" : "Patient/patient-single-example"
   },
-  "encounter" : {
-    "reference" : "Encounter/encounter-single-example"
-  },
   "onsetDateTime" : "2020-03-15",
   "recordedDate" : "2020-03-15T10:30:00Z",
   "note" : [{

@@ -40,9 +40,6 @@
   "subject" : {
     "reference" : "Patient/patient-single-example"
   },
-  "encounter" : {
-    "reference" : "Encounter/encounter-single-example"
-  },
   "onsetDateTime" : "2020-03-15",
   "recordedDate" : "2020-03-15T10:30:00Z",
   "note" : [{

@@ -8,8 +8,6 @@
 
 **subject**: [Juan Jane Dela Fuente Dela Cruz Male, DoB: 1980-01-01 ( http://philhealth.gov.ph/fhir/Identifier/philhealth-id#PhilHealthID#63-584789845-5)](Patient-example-patient.md)
 
-**encounter**: [Encounter: status = finished; class = ambulatory (ActCode#AMB)](Encounter-example-encounter.md)
-
 
 
 ## Resource Content
@@ -34,9 +32,6 @@
   },
   "subject" : {
     "reference" : "Patient/example-patient"
-  },
-  "encounter" : {
-    "reference" : "Encounter/example-encounter"
   }
 }
 

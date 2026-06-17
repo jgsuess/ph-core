@@ -477,10 +477,6 @@
      fhir:link <https://fhir.doh.gov.ph/phcore/Patient/patient-single-example> ;
      fhir:reference [ fhir:v "Patient/patient-single-example" ]
   ] ; # 
-  fhir:encounter [
-     fhir:link <https://fhir.doh.gov.ph/phcore/Encounter/encounter-single-example> ;
-     fhir:reference [ fhir:v "Encounter/encounter-single-example" ]
-  ] ; # 
   fhir:onset [
      a fhir:dateTime ;
      fhir:v "2020-03-15"^^xsd:date
