@@ -8,7 +8,6 @@ Description: "Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus
 * code = $sct#44054006 "Diabetes mellitus type 2"
 * code.text = "Type 2 Diabetes Mellitus"
 * subject = Reference(Patient/patient-single-example)
-* encounter = Reference(Encounter/encounter-single-example)
 * onsetDateTime = "2020-03-15"
 * recordedDate = "2020-03-15T10:30:00Z"
 * note.text = "Patient advised on diet and exercise management."
