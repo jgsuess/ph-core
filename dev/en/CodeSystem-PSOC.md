@@ -27,7 +27,7 @@ This Code system is referenced in the definition of the following value sets:
   "title" : "Mock PSOC",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-06-17T09:04:26+00:00",
+  "date" : "2026-06-17T09:15:19+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

@@ -67,8 +67,8 @@
     "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
-    "StructureDefinition-barangay.html" : "Barangay",
-    "StructureDefinition-ph-core-pwd-disability.html" : "PH Core PWD Disability Registration"
+    "StructureDefinition-ph-core-pwd-disability.html" : "PH Core PWD Disability Registration",
+    "StructureDefinition-barangay.html" : "Barangay"
   },
   {
     "url" : "https://fhir.doh.gov.ph/phcore/ValueSet/cities",
@@ -92,11 +92,11 @@
     "systems" : ["https://verification.fda.gov.ph"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
-    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
     "StructureDefinition-ph-core-medication.html" : "PH Core Medication",
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement"
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
+    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration"
   },
   {
     "url" : "https://fhir.doh.gov.ph/phcore/ValueSet/educational-attainments",
