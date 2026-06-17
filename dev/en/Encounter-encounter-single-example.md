@@ -27,9 +27,9 @@ An ambulatory visit for Juan Dela Cruz that has been completed.
   },
   "type" : [{
     "coding" : [{
-      "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-      "code" : "AMB",
-      "display" : "ambulatory"
+      "system" : "http://snomed.info/sct",
+      "code" : "11429006",
+      "display" : "Consultation"
     }]
   }],
   "subject" : {

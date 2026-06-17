@@ -384,9 +384,10 @@
   ] ; # 
   fhir:type ( [
      fhir:coding ( [
-       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-ActCode"^^xsd:anyURI ] ;
-       fhir:code [ fhir:v "AMB" ] ;
-       fhir:display [ fhir:v "ambulatory" ]
+       a sct:11429006 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "11429006" ] ;
+       fhir:display [ fhir:v "Consultation" ]
      ] )
   ] ) ; # 
   fhir:subject [

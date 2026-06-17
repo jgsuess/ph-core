@@ -6,7 +6,7 @@
     <profile value="https://fhir.doh.gov.ph/phcore/StructureDefinition/ph-core-location"/>
   </meta>
   <text>
-    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">Philippine General Hospital Main Building - A tertiary hospital located in Manila.</div>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">Philippine General Hospital (PGH) is an active tertiary government hospital located in Ermita, City of Manila, National Capital Region, Philippines.</div>
   </text>
   <status value="active"/>
   <name value="Philippine General Hospital"/>

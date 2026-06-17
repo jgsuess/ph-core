@@ -2,7 +2,7 @@
 
 ## Example Location: Example PH Core Location
 
-Philippine General Hospital Main Building - A tertiary hospital located in Manila.
+Philippine General Hospital (PGH) is an active tertiary government hospital located in Ermita, City of Manila, National Capital Region, Philippines.
 
 
 
