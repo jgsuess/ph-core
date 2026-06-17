@@ -1,0 +1,46 @@
+name: Validate docs
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  validate-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate branch name
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+        run: |
+          echo "Checking branch name: $BRANCH_NAME"
+
+          if echo "$BRANCH_NAME" | grep -q '/'; then
+            echo "::error::Branch name contains '/'. Use hyphens instead."
+            exit 1
+          fi
+
+          if echo "$BRANCH_NAME" | grep -qE '[\\~^:\[\] ]'; then
+            echo "::error::Branch name contains invalid special characters."
+            exit 1
+          fi
+
+          echo "Branch name validation passed"
+
+  sushi:
+    needs: validate-branch-name
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Install SUSHI
+        run: npm install -g fsh-sushi
+
+      - name: Validate with SUSHI
+        run: sushi .
