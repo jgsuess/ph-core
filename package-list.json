@@ -5,13 +5,22 @@
   "introduction": "Philippine Core FHIR Implementation Guide",
   "list": [
     {
+      "version": "0.1.1",
+      "date": "2026-06-17",
+      "path": "https://jgsuess.github.io/ph-core/0.1.1",
+      "status": "draft",
+      "fhirversion": "4.0.1",
+      "sequence": "Draft",
+      "current": true
+    },
+    {
       "version": "0.1.0",
       "date": "2026-06-17",
       "path": "https://jgsuess.github.io/ph-core/0.1.0",
       "status": "draft",
       "fhirversion": "4.0.1",
       "sequence": "Draft",
-      "current": true
+      "current": false
     }
   ]
 }
